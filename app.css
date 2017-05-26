@@ -1,0 +1,163 @@
+body {
+  font-family: arial;
+  color: #111111;
+}
+
+a:visited, a:active, a:hover {
+  color: inherit;
+}
+
+#container {
+  max-width: 960px;
+  margin: 0 auto;
+  margin-top: 16px;
+  border: 1px solid #111111;
+}
+
+#search {
+  position: relative;
+  height: 96px;
+  border-bottom: 1px solid #111111;
+}
+
+#results {
+  padding: 16px;
+}
+
+#streams {
+  transition: opacity 300ms;
+}
+
+#streams.in-progress {
+  opacity: 0;
+}
+
+#streams.loaded {
+  opacity: 1;
+}
+
+.total {
+  font-size: 14px;
+}
+
+.pages {
+  vertical-align: top;
+  font-size: 14px;
+}
+
+.tile {
+  height: 180px;
+  position: relative;
+  cursor: pointer;
+  margin-bottom: 16px;
+  border: 1px solid white;
+}
+
+.tile:hover {
+  border: 1px solid black;
+}
+
+.preview-container {
+  display: inline-block;
+  width: 240px;
+  height: 180px;
+}
+
+.preview-container.pending {
+  .preview.pending {
+    background-image: url('spinner.gif');
+  }
+}
+
+.preview {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  left: 0;
+  top: 0;
+ }
+
+ .copy {
+   height: 142px;
+   position: absolute;
+   left: 256;
+   padding-top: 16px;
+   padding-bottom: 16px;
+   border-bottom: 1px solid #eeeeee;
+ }
+
+.copy .name {
+  font-size: 28px;
+  font-weight: 600;
+  border-bottom: 1px solid #eeeeee;
+  margin-bottom: 8px;
+}
+
+.copy .details {
+  border-bottom: 1px solid #eeeeee;
+  margin-bottom: 8px;
+}
+
+.spinner {
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  background-image: url('spinner.gif');
+}
+
+.search-controls {
+  position: absolute;
+  left: 32px;
+  top: 48px;
+}
+
+.search-controls input {
+  padding: 4px;
+}
+
+.search-controls button {
+  padding: 4px 16px;
+  border-radius: 5px;
+}
+
+.paginator .enabled {
+  cursor: pointer;
+  opacity: 1;
+  font-weight: 600;
+}
+
+.paginator .disabled {
+  opacity: 0.5;
+}
+
+.paginator {
+  height: 24px;
+  position: relative;
+}
+
+.paginator .total {
+  position: absolute;
+  left: 0px;
+}
+
+.paginator .controls {
+  position: absolute;
+  right: 0px;
+}
+
+.paginator .button, .paginator .pages {
+  display: inline-block;
+}
+
+::-webkit-input-placeholder {
+  font-style: italic;
+}
+::-moz-placeholder {
+  font-style: italic;
+}
+:-ms-input-placeholder {
+  font-style: italic;
+}
+:-moz-placeholder {
+  font-style: italic;
+}

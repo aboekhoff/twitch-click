@@ -1,0 +1,44 @@
+<html>
+<head>
+  <title>PS-TWITCH</title>
+  <link rel="stylesheet" type="text/css" href="reset.css">
+  <link rel="stylesheet" type="text/css" href="app.css">
+</head>
+<body>
+  <script type="text/template" id="paginator">
+    <div class="paginator">
+      <div class="total">Total results: {{total}}</div>
+      <div class="controls">
+        <div id="back-button" class="button {{prevClass}}">&#9664;</div>
+        <div class="pages">{{currentPage}}/{{totalPages}}</div>
+        <div id="next-button" class="button {{nextClass}}">&#9654;</div>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/template" id="tile">
+    <div id="{{id}}" class="tile" onclick="window.location='{{url}}'">
+      <img class="preview" src="{{preview}}" onload="imageLoaded({{id}})"/>
+      <div class="copy">
+        <div class="name">{{name}}</div>
+        <div class="details">{{game}} - {{viewers}} viewers</div>
+        <div class="description">{{description}}</div>
+      </div>
+    </div>
+  </script>
+
+  <div id="container">
+    <div id="search">
+      <div class="search-controls">
+        <input id="search-input" value="starcraft" placeholder="Search query..." />
+        <button id="search-button">Search</button>
+      </div>
+    </div>
+    <div id="results">
+      <div id="chrome"></div>
+      <div id="streams"></div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
