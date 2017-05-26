@@ -17,8 +17,10 @@
   </script>
 
   <script type="text/template" id="tile">
-    <div id="{{id}}" class="tile" onclick="window.location='{{url}}'">
-      <img class="preview" src="{{preview}}" onload="imageLoaded({{id}})"/>
+    <div class="tile" onclick="window.location='{{url}}'">
+      <div class="preview-container">
+        <img id="{{id}}" class="preview pending" src="{{preview}}" onload="previewLoaded('{{id}}')"/>
+      </div>
       <div class="copy">
         <div class="name">{{name}}</div>
         <div class="details">{{game}} - {{viewers}} viewers</div>

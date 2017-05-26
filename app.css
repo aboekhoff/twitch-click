@@ -61,12 +61,10 @@ a:visited, a:active, a:hover {
   display: inline-block;
   width: 240px;
   height: 180px;
-}
-
-.preview-container.pending {
-  .preview.pending {
-    background-image: url('spinner.gif');
-  }
+  background-image: url('spinner.gif');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .preview {
@@ -75,12 +73,22 @@ a:visited, a:active, a:hover {
   margin: 0;
   left: 0;
   top: 0;
+  transition: opacity 300ms;
+ }
+
+ .preview.pending {
+   opacity: 0;
+ }
+
+ .preview.loaded {
+   opacity: 1;
  }
 
  .copy {
    height: 142px;
    position: absolute;
    left: 256;
+   top: 0;
    padding-top: 16px;
    padding-bottom: 16px;
    border-bottom: 1px solid #eeeeee;

@@ -10,11 +10,24 @@ var templates = {}
 function compileTemplate(id) {
   var elt = document.getElementById(id)
   var txt = elt.innerHTML
+  var regexes = null
+
   return function(data) {
+    // initialize regexes for global replace on first use
+    if (regexes == null) {
+      regexes = {}
+      keys(data).forEach(function(key) {
+        regexes[key] = new RegExp('\\{\\{' + key + '\\}\\}', 'g')
+      })
+    }
+
     var res = txt
+
     keys(data).forEach(function(key) {
-      res = res.replace('{{' + key + '}}', data[key])
+      res = res.replace(regexes[key], data[key])
+      console.log(res)
     })
+
     return res
   }
 }
@@ -51,7 +64,6 @@ function getJSONP(url, params, callback) {
     callback: identifier
   }))
   head.appendChild(elt)
-  console.log(queryString)
   elt.src = url + '?' + queryString
 }
 
@@ -88,6 +100,10 @@ function executeQuery(query, page) {
   renderResults()
 }
 
+function previewLoaded(id) {
+  document.getElementById(id).className = 'preview loaded'
+}
+
 function renderResults() {
   var streams = document.getElementById('streams')
   var chrome = document.getElementById('chrome')
@@ -115,6 +131,7 @@ function renderResults() {
       streams.innerHTML += render(
         'tile',
         {
+          id: 'tile' + i,
           preview: stream.preview.template.replace('{width}', 240).replace('{height}', 180),
           url: stream.channel.url,
           name: stream.channel.display_name,
@@ -128,8 +145,6 @@ function renderResults() {
     setTimeout(function() {
       var backButton = document.getElementById('back-button')
       var nextButton = document.getElementById('next-button')
-
-      console.log(backButton, nextButton)
 
       backButton.onclick = function() { pageBackward() }
       nextButton.onclick = function() { pageForward() }
